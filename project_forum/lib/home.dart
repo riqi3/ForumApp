@@ -1,11 +1,16 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:project_forum/provider/ForumSectionProvider.dart';
-import 'package:project_forum/screens/NewForum.dart';
+import 'package:project_forum/provider/ForumTopicProvider.dart';
+ 
 import 'package:provider/provider.dart';
 
-import 'widgets/ForumWidget.dart';
+import 'widgets/SectionWidget.dart';
+import 'widgets/TopicWidget.dart';
+
+ 
+
+ 
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -94,12 +99,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('forum'),
       ),
-      body: ForumWidget(),
+      body: SectionWidget(),
       backgroundColor: Colors.amber,
       floatingActionButton: FloatingActionButton(
         onPressed: ()   {
           Navigator.of(context).pushNamed(
-                '/new',
+                '/newSection',
               );
         },
         child: const Icon(Icons.add),

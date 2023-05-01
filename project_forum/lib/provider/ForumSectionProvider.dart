@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 import 'dart:collection';
 
-import '../model/ForumSectionModel.dart';
+import 'package:project_forum/model/ForumSectionModel.dart';
+class SectionProvider with ChangeNotifier {
+  List<SectionModel> _sections = [];
 
-class ForumProvider with ChangeNotifier {
-  List<ForumModel> _topics = [];
+  UnmodifiableListView<SectionModel> get allSections =>
+      UnmodifiableListView(_sections);
 
-  UnmodifiableListView<ForumModel> get allTopics =>
-      UnmodifiableListView(_topics);
-
-  // void addTopic(String topic, String description) {
-  //   _topics.add(ForumModel(forumTitle: topic, completed: false, forumDescription: description));
-  //   notifyListeners();
-  // } 
-
-    void add(ForumModel forumTopic) {
-    _topics.add(forumTopic);
+    void add(SectionModel section) {
+    _sections.add(section);
     notifyListeners();
   }
 
-  void toggleTopic(ForumModel topic) {
-    final topicIndex = _topics.indexOf(topic);
-    _topics[topicIndex].toggleCompleted();
+  void toggleSection(SectionModel section) {
+    final sectionIndex = _sections.indexOf(section);
+    _sections[sectionIndex].toggleCompleted();
     notifyListeners();
   }
 
-  void deleteTopic(ForumModel topic) {
-    _topics.remove(topic);
+  void deleteSection(SectionModel section) {
+    _sections.remove(section);
     notifyListeners();
   }
 }

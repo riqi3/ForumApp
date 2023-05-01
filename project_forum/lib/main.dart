@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:project_forum/model/ForumSectionModel.dart';
-import 'package:project_forum/provider/ForumSectionProvider.dart';
+import 'package:project_forum/model/ForumTopicModel.dart';
+import 'package:project_forum/provider/ForumTopicProvider.dart';
 import 'package:project_forum/screens/LoginScreen.dart';
-import 'package:project_forum/screens/NewForum.dart';
+import 'package:project_forum/screens/TopicScreen.dart';
+
 import 'package:provider/provider.dart';
 
 import 'home.dart';
-import 'widgets/NewForumWidget.dart';
+import 'provider/ForumSectionProvider.dart';
+import 'widgets/NewSectionWidget.dart';
+import 'widgets/NewTopicWidget.dart';
 
 void main() {
-  runApp(const ForumApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SectionProvider()),
+        ChangeNotifierProvider(create: (_) => TopicProvider()),
+      ],
+      child: ForumApp(),
+    ),
+  );
 }
+
+// const ForumApp()
 
 class ForumApp extends StatelessWidget {
   const ForumApp({super.key});
@@ -19,16 +32,18 @@ class ForumApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: ((context) => ForumProvider()),
+      create: ((context) => SectionProvider()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'FORUM',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        initialRoute: '/',
         routes: {
-          '/new': (context) => const NewForumWidget(),
+          '/': (context) => HomeScreen(), 
+          '/newSection': (context) => NewSectionWidget(),
+          '/newTopics': (context) => NewTopicWidget(),
         },
       ),
     );

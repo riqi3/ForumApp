@@ -1,11 +1,11 @@
-class ForumModel {
-  String forumTitle;
-  String forumDescription;
+class SectionModel {
+  String sectionTitle;
+  String sectionDescription;
   bool completed;
 
-  ForumModel({
-    required this.forumTitle,
-    required this.forumDescription,
+  SectionModel({
+    required this.sectionTitle,
+    required this.sectionDescription,
     this.completed = false,
   });
 

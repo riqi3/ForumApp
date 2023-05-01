@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project_forum/model/ForumSectionModel.dart';
+import 'package:project_forum/model/ForumSectionModel.dart';
 import 'package:project_forum/provider/ForumSectionProvider.dart';
 import 'package:provider/provider.dart';
 
-class NewForumWidget extends StatefulWidget {
-  const NewForumWidget({super.key});
+class NewSectionWidget extends StatefulWidget {
+  const NewSectionWidget({super.key});
 
   @override
-  State<NewForumWidget> createState() => _NewForumWidgetState();
+  State<NewSectionWidget> createState() => _NewSectionWidgetState();
 }
 
-class _NewForumWidgetState extends State<NewForumWidget> {
+class _NewSectionWidgetState extends State<NewSectionWidget> {
   late final TextEditingController _controllerTitle;
   late final TextEditingController _controllerDescription;
 
@@ -33,7 +34,7 @@ class _NewForumWidgetState extends State<NewForumWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'add new topic',
+          'add new section',
         ),
       ),
       body: Column(
@@ -41,7 +42,7 @@ class _NewForumWidgetState extends State<NewForumWidget> {
           TextField(
             controller: _controllerTitle,
             decoration: const InputDecoration(
-              hintText: 'Any topics in mind?',
+              hintText: 'Section Name',
             ),
           ),
           TextField(
@@ -54,13 +55,8 @@ class _NewForumWidgetState extends State<NewForumWidget> {
             onPressed: () {
               final title = _controllerTitle.text;
               final description = _controllerDescription.text;
-              final newTopic = ForumModel(
-                forumTitle: title,
-                completed: false,
-                forumDescription: description,
-              );
-
-              context.read<ForumProvider>().add(newTopic);
+              final newSection = SectionModel(sectionTitle: title, sectionDescription: description);
+              context.read<SectionProvider>().add(newSection);
               Navigator.of(context).pop();
             },
             child: Text(
