@@ -9,7 +9,7 @@ class TopicProvider with ChangeNotifier {
   UnmodifiableListView<TopicModel> get allTopics =>
       UnmodifiableListView(_topics);
 
-    void add(TopicModel Topic) {
+  void add(TopicModel Topic) {
     _topics.add(Topic);
     notifyListeners();
   }

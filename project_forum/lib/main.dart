@@ -15,8 +15,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SectionProvider()),
-        ChangeNotifierProvider(create: (_) => TopicProvider()),
+        ChangeNotifierProvider(create: (_) => SectionProvider(), child: ForumApp(),),
+        ChangeNotifierProvider(create: (_) => TopicProvider(), child: ForumApp(),),
       ],
       child: ForumApp(),
     ),

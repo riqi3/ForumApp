@@ -3,24 +3,24 @@ import 'dart:collection';
 
 import 'package:project_forum/model/ForumSectionModel.dart';
 class SectionProvider with ChangeNotifier {
-  List<SectionModel> _sections = [];
+  List<SectionModel> sections = [];
 
   UnmodifiableListView<SectionModel> get allSections =>
-      UnmodifiableListView(_sections);
+      UnmodifiableListView(sections);
 
-    void add(SectionModel section) {
-    _sections.add(section);
+  void add(SectionModel section) {
+    sections.add(section);
     notifyListeners();
   }
 
   void toggleSection(SectionModel section) {
-    final sectionIndex = _sections.indexOf(section);
-    _sections[sectionIndex].toggleCompleted();
+    final sectionIndex = sections.indexOf(section);
+    sections[sectionIndex].toggleCompleted();
     notifyListeners();
   }
 
   void deleteSection(SectionModel section) {
-    _sections.remove(section);
+    sections.remove(section);
     notifyListeners();
   }
 }
