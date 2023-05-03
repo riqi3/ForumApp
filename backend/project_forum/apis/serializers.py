@@ -4,8 +4,8 @@ from forums import models
 class ForumSerializer(serializers.ModelSerializer):
     class Meta:
         fields=(
-            'id'
-            'title'
-            'description'
+            'id',
+            'title',
+            'description',
         )
         model=models.Forum

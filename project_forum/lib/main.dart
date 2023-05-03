@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_forum/model/ForumTopicModel.dart';
 import 'package:project_forum/provider/ForumTopicProvider.dart';
-import 'package:project_forum/screens/LoginScreen.dart';
-import 'package:project_forum/screens/TopicScreen.dart';
-
 import 'package:provider/provider.dart';
-
 import 'home.dart';
 import 'provider/ForumSectionProvider.dart';
 import 'widgets/NewSectionWidget.dart';

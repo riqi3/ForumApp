@@ -25,7 +25,11 @@ SECRET_KEY = 'o17!yn)4e-e#_vf5rm2qxa@bb9f507!xhqtxp%=xx%y2ke6&g#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '10.0.2.2',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apis.apps.ApisConfig',
+    'rest_framework',
     'forums.apps.ForumsConfig'
 ]
 

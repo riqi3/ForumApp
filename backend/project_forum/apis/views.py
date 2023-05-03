@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from rest_framework import generics
 
 from forums import models
 from .serializers import ForumSerializer
 
 class ListForum(generics.ListCreateAPIView):
-    quueryset=models.objects.all()
+    queryset=models.Forum.objects.all()
     serializer_class=ForumSerializer
 
 class DetailForum(generics.RetrieveUpdateDestroyAPIView):

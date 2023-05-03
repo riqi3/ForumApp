@@ -55,7 +55,7 @@ class _NewSectionWidgetState extends State<NewSectionWidget> {
             onPressed: () {
               final title = _controllerTitle.text;
               final description = _controllerDescription.text;
-              final newSection = SectionModel(sectionTitle: title, sectionDescription: description);
+              final newSection = SectionModel(id: 0,sectionTitle: title, sectionDescription: description);
               context.read<SectionProvider>().add(newSection);
               Navigator.of(context).pop();
             },
