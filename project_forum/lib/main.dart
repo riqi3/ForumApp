@@ -3,6 +3,7 @@ import 'package:project_forum/provider/ForumTopicProvider.dart';
 import 'package:provider/provider.dart';
 import 'home.dart';
 import 'provider/ForumSectionProvider.dart';
+import 'screens/LoginScreen.dart';
 import 'widgets/NewSectionWidget.dart';
 import 'widgets/NewTopicWidget.dart';
 
@@ -36,7 +37,7 @@ class ForumApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => HomeScreen(), 
+          '/': (context) => LoginScreen(), 
           '/newSection': (context) => NewSectionWidget(),
           '/newTopics': (context) => NewTopicWidget(),
         },
