@@ -46,15 +46,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apis.apps.ApisConfig',
     'rest_framework',
-    'graphene_django',
-    'users',
-    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
+    'rest_framework.authtoken',
     'forums.apps.ForumsConfig',
-    'graphql_auth',
-    'django_filters', 
 ]
 
-AUTH_USER_MODEL = 'users.UserLogin'
+REST_FRAMEWORK={
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+ 
 
 EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
 
@@ -69,25 +76,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
-GRAPHENE = {
-    'SCHEMA': 'project_forum.schema.schema', 
-    'MIDDLEWARE': [
-        'graphql_jwt.middleware.JSONWebTokenMiddleware',
-    ],
-}
+ 
 
 AUTHENTICATION_BACKENDS = [
     'graphql_auth.backends.GraphQLAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-GRAPHQL_JWT = {
-    "JWT_VERIFY_EXPIRATION": True,
-    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
-    "JWT_ALLOW_ANY_CLASSES": [
-        "graphql_auth.mutations.Register",
-    ],
-}
+ 
 
 ROOT_URLCONF = 'project_forum.urls'
 
@@ -139,11 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REST_FRAMEWORK={
-    'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.AllowAny',
-    ]
-}
 
 
 # Internationalization
