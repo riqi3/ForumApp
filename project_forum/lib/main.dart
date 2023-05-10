@@ -3,15 +3,26 @@ import 'package:project_forum/provider/ForumTopicProvider.dart';
 import 'package:provider/provider.dart';
 import 'home.dart';
 import 'provider/ForumSectionProvider.dart';
+import 'screens/LoginScreen.dart';
+import 'screens/TopicScreen.dart';
 import 'widgets/NewSectionWidget.dart';
 import 'widgets/NewTopicWidget.dart';
 
+String envurl = 'http://10.0.2.2:8000/';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SectionProvider(), child: ForumApp(),),
-        ChangeNotifierProvider(create: (_) => TopicProvider(), child: ForumApp(),),
+        ChangeNotifierProvider(
+          create: (_) => SectionProvider(),
+          child: ForumApp(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TopicProvider(),
+          child: ForumApp(),
+        ),
       ],
       child: ForumApp(),
     ),
@@ -36,7 +47,8 @@ class ForumApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => HomeScreen(), 
+          '/': (context) => HomeScreen(),
+          '/home': (context)=> HomeScreen(),
           '/newSection': (context) => NewSectionWidget(),
           '/newTopics': (context) => NewTopicWidget(),
         },
