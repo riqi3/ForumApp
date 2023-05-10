@@ -32,7 +32,7 @@ urlpatterns = [
 ]
 
 
-router = DefaultRouter()
-router.register('user', UserViewSet, basename='user')
+# router = DefaultRouter()
+# router.register('user', UserViewSet, basename='user')
 
-urlpatterns += router.urls
+# urlpatterns += router.urls

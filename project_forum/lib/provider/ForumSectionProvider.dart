@@ -4,6 +4,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:project_forum/model/ForumSectionModel.dart';
 
+import '../main.dart';
+import '../screens/LoginScreen.dart';
+
 class SectionProvider with ChangeNotifier {
   SectionProvider() {
     this.fetchSection();
@@ -21,7 +24,7 @@ class SectionProvider with ChangeNotifier {
   }
 
   void deleteSection(SectionModel section) async {
-    final url = 'http://10.0.2.2:8000/apis/v1/${section.id}/';
+    final url = '${envurl}/apis/v1/${section.id}/';
     final response = await http.delete(Uri.parse(url));
 
     if (response.statusCode == 204) {
@@ -31,7 +34,7 @@ class SectionProvider with ChangeNotifier {
   }
 
   void add(SectionModel section) async {
-    final url = 'http://10.0.2.2:8000/apis/v1/?format=json';
+    final url = '${envurl}apis/v1/?format=json';
     final response = await http.post(Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
         body: json.encode(section));
@@ -44,7 +47,7 @@ class SectionProvider with ChangeNotifier {
 
   fetchSection() async {
     // final url = 'http://127.0.0.1:8000/apis/v1/?format=json';
-    final url = 'http://10.0.2.2:8000/apis/v1/?format=json';
+    final url = '${envurl}/apis/v1/?format=json';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       var data = json.decode(response.body) as List;

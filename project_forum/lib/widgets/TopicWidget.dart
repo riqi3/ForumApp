@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_forum/home.dart';
 import 'package:project_forum/provider/ForumTopicProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class TopicWidget extends StatelessWidget {
       itemCount: topic.allTopics.length,
       itemBuilder: ((context, index) => GestureDetector(
         onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
       },
         child: ListTile(
               leading: CircleAvatar(

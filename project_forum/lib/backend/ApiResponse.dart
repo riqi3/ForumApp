@@ -30,7 +30,7 @@
 //   Map<String, dynamic> toJson();
 // }
 
-class ApiResponse {
+class   ApiResponse {
   late Object _data;
   late Object _apiError;
   // late String _error;

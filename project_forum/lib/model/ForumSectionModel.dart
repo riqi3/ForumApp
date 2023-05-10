@@ -14,6 +14,7 @@ class SectionModel {
     this.completed = false,
   });
 
+
   factory SectionModel.fromJson(Map<String, dynamic> json) {
     return SectionModel(
       id: json['id'],

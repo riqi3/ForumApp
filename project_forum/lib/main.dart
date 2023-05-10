@@ -8,6 +8,8 @@ import 'screens/TopicScreen.dart';
 import 'widgets/NewSectionWidget.dart';
 import 'widgets/NewTopicWidget.dart';
 
+String envurl = 'http://10.0.2.2:8000/';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
@@ -45,7 +47,7 @@ class ForumApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginScreen(),
+          '/': (context) => HomeScreen(),
           '/home': (context)=> HomeScreen(),
           '/newSection': (context) => NewSectionWidget(),
           '/newTopics': (context) => NewTopicWidget(),
